@@ -2,6 +2,7 @@ import './App.css'
 import Navbar from "./components/Navbar.jsx";
 import {strings} from "./strings/strings.js";
 import CardList from "./components/CardList.jsx";
+import SingleCard from "./components/SingleCard.jsx";
 
 function App() {
 
