@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SingleCard from './SingleCard';
 import { Grid, CircularProgress, Box, Typography, Button } from '@mui/material';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-function CardList() {
+function CardList({ onNext, onBack }) {
     const [skips, setSkips] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -85,31 +86,63 @@ function CardList() {
                             from: { transform: 'translateY(0)' },
                             to: { transform: 'translateY(100%)' },
                         },
+                        '@media (max-width: 1024px)': {
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            paddingX: 2,
+                            '& > div': {
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                marginTop: 1,
+                            },
+                            '& button': {
+                                flex: 1,
+                                marginX: 1,
+                            },
+                        },
                     }}
                 >
-                    <Typography variant="h6">
-                        {skips[selectedCardIndex].size} Yard Skip - £{skips[selectedCardIndex].price_before_vat} + VAT
+                    <Typography variant="h6" sx={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
+                        {skips[selectedCardIndex].size} Yard Skip -
+                        <Typography component="span" sx={{ color: '#0037C1', fontWeight: 600, marginLeft: '0.25rem', fontSize: '1.75rem' }}>
+                            £{(skips[selectedCardIndex].price_before_vat * (skips[selectedCardIndex].hire_period_days / 7)).toFixed(2)}
+                        </Typography>
+                        <Typography component="span" sx={{ fontSize: '1rem', marginLeft: '0.25rem' }}>
+                            + VAT
+                        </Typography>
                     </Typography>
                     <Box>
-                        <Button variant="contained" sx={{
+                        <Button variant="contained"
+                                onClick={onBack}
+                                sx={{
                             backgroundColor: '#2A2A2A',
                             marginX: '0.5rem',
                             textTransform: 'none',
                             '&:hover': {
                                 backgroundColor: '#3A3A3A',
                             },
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: 500,
+                            fontSize: '1rem'
                         }}>
                             Back
                         </Button>
-                        <Button variant="contained" sx={{
+                        <Button variant="contained"
+                                onClick={onNext}
+                                sx={{
                             backgroundColor: '#0037C1',
                             marginX: '0.5rem',
                             textTransform: 'none',
                             '&:hover': {
                                 backgroundColor: '#002DA1',
                             },
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: 500,
+                            fontSize: '1rem',
                         }}>
                             Continue
+                            <ArrowForwardIcon sx={{ marginLeft: 1, fontSize: '1rem' }} />
                         </Button>
                     </Box>
                 </Box>

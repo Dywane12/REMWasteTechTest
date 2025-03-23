@@ -12,7 +12,7 @@ import {
 // Styled connector
 const BlueConnector = styled(StepConnector)(({ theme }) => ({
     '& .MuiStepConnector-line': {
-        borderColor: '#1976d2',
+        borderColor: '#0037C1',
         borderWidth: 2,
     },
 }));
@@ -21,13 +21,14 @@ const BlueConnector = styled(StepConnector)(({ theme }) => ({
 const CustomStepLabel = styled(StepLabel)(({ active, completed, disabled }) => ({
     display: 'flex',
     alignItems: 'center',
-    color: completed ? '#1976d2' : '#555',
-    cursor: disabled ? 'not-allowed' : 'pointer',
+    color: completed ? '#0037C1' : '#555',
     fontSize: '0.5rem',
     whiteSpace: 'nowrap',
+    fontFamily: 'Inter, system-ui, sans-serif',
     '& .MuiStepLabel-label': {
-        fontSize: '1rem',
+        fontSize: '1.1rem',
         color: completed ? '#fff' : '#555',
+        cursor: disabled ? 'not-allowed' : 'pointer',
     },
     '& .MuiStepLabel-label.Mui-active': {
         color: '#fff',
@@ -37,15 +38,15 @@ const CustomStepLabel = styled(StepLabel)(({ active, completed, disabled }) => (
     },
     '& .MuiSvgIcon-root': {
         fontSize: '2rem',
-        color: completed || active ? '#1976d2' : '#555',
+        color: completed || active ? '#0037C1' : '#555',
+        cursor: disabled ? 'not-allowed' : 'pointer',
     },
     '&.Mui-disabled .MuiSvgIcon-root': {
         color: '#555',
     },
 }));
 
-const Navbar = () => {
-    const activeStep = 2;
+const Navbar = ({ activeStep, setActiveStep }) => {
     const isSmallScreen = useMediaQuery('(max-width: 600px)');
     const steps = [
         { label: 'Postcode', icon: <Location /> },
@@ -55,6 +56,12 @@ const Navbar = () => {
         { label: 'Choose Date', icon: <CalendarIcon /> },
         { label: 'Payment', icon: <CreditCardIcon /> },
     ];
+
+    const handleStepClick = (index) => {
+        if (index <= activeStep) {
+            setActiveStep(index);
+        }
+    };
 
     return (
         <Box
@@ -71,10 +78,10 @@ const Navbar = () => {
                 connector={<BlueConnector />}
                 sx={{
                     width: '100%',
-                    maxWidth: '75rem', // Set a max-width to ensure it doesn't exceed the container
+                    maxWidth: '75rem',
                     display: 'flex',
                     justifyContent: 'center',
-                    flexWrap: 'wrap', // Allow steps to wrap on smaller screens
+                    flexWrap: 'wrap',
                 }}
             >
                 {steps.map((step, index) => (
@@ -84,7 +91,9 @@ const Navbar = () => {
                         disabled={index > activeStep}
                         sx={{
                             flexShrink: 0,
+                            cursor: index <= activeStep ? 'pointer' : 'not-allowed',
                         }}
+                        onClick={() => handleStepClick(index)}
                     >
                         <CustomStepLabel
                             icon={step.icon}

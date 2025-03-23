@@ -19,6 +19,7 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                 position: 'relative',
                 '&:hover': {
                     borderColor: isDisabled ? '#555' : '#0037C1',
+                    transition: '0.3s',
                 },
                 cursor: isDisabled ? 'not-allowed' : 'pointer',
                 opacity: isDisabled ? 0.6 : 1,
@@ -39,8 +40,10 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                         right: '1rem',
                         top: '1rem',
                         backgroundColor: '#0037C1',
-                        fontWeight: 600,
                         color: '#FFFFFF',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: 500,
+                        fontSize: '1rem'
                     }}
                 />
                 {!allowedOnRoad && (
@@ -58,7 +61,7 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                         }}
                     >
                         <WarningAmberOutlinedIcon sx={{ color: '#E4AF07', marginRight: '0.5rem', fontSize: '1rem' }} />
-                        <Typography variant="body2" color="#E4AF07" sx={{ fontSize: '0.75rem' }}>
+                        <Typography variant="body2" color="#E4AF07" sx={{ fontSize: '0.75rem', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
                             Private Property Only
                         </Typography>
                     </Box>
@@ -78,16 +81,19 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                         }}
                     >
                         <WarningAmberOutlinedIcon sx={{ color: '#E84242', marginRight: '0.5rem', fontSize: '1rem' }} />
-                        <Typography variant="body2" color="#E84242" sx={{ fontSize: '0.75rem' }}>
+                        <Typography variant="body2" color="#E84242" sx={{ fontSize: '0.75rem', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
                             Not Suitable for Heavy Waste
                         </Typography>
                     </Box>
                 )}
             </Box>
             <CardContent>
-                <Typography variant="h6" gutterBottom>{`${size} Yard Skip`}</Typography>
-                <Typography variant="body2" color="gray">{`${hirePeriod} day hire period`}</Typography>
-                <Typography variant="h5" color="#1976d2" sx={{ marginTop: 1 }}>{`£${price} per week`}</Typography>
+                <Typography variant="h6" gutterBottom sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${size} Yard Skip`}</Typography>
+                <Typography variant="body2" color="gray" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${hirePeriod} day hire period`}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'baseline', marginTop: 1 }}>
+                    <Typography variant="h4" color="#0037C1" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`£${price}`}</Typography>
+                    <Typography variant="body1" color="gray" sx={{ marginLeft: 1, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>per week</Typography>
+                </Box>
                 <Button
                     variant="contained"
                     fullWidth
@@ -102,6 +108,8 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                             backgroundColor: selected ? '#002DA1' : '#444',
                         },
                         cursor: isDisabled ? 'not-allowed' : 'pointer',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: 500
                     }}
                 >
                     {selected ? 'Selected' : 'Select This Skip'}
