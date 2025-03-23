@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function StepTemplate({ stepName, onNext, onBack, activeStep }) {
     return (
@@ -25,6 +26,7 @@ function StepTemplate({ stepName, onNext, onBack, activeStep }) {
                             fontSize: '1rem'
                         }}
                     >
+                        <ArrowBackIcon sx={{ marginRight: 1, fontSize: '1rem' }} />
                         Back
                     </Button>
                 ) : null}
