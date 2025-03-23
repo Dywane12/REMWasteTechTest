@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box, Typography } from '@mui/material';
+import ContinueButton from "./ContinueButton.jsx";
+import BackButton from "./BackButton.jsx";
 
 function StepTemplate({ stepName, onNext, onBack, activeStep }) {
     return (
@@ -11,44 +11,10 @@ function StepTemplate({ stepName, onNext, onBack, activeStep }) {
             </Typography>
             <Box sx={{ marginTop: 2 }}>
                 {activeStep > 0 ? (
-                    <Button
-                        variant="contained"
-                        onClick={onBack}
-                        sx={{
-                            backgroundColor: '#2A2A2A',
-                            marginX: '0.5rem',
-                            textTransform: 'none',
-                            '&:hover': {
-                                backgroundColor: '#3A3A3A',
-                            },
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: 500,
-                            fontSize: '1rem'
-                        }}
-                    >
-                        <ArrowBackIcon sx={{ marginRight: 1, fontSize: '1rem' }} />
-                        Back
-                    </Button>
+                    <BackButton onBack={onBack} />
                 ) : null}
                 {activeStep < 5 ? (
-                    <Button
-                        variant="contained"
-                        onClick={onNext}
-                        sx={{
-                            backgroundColor: '#0037C1',
-                            marginX: '0.5rem',
-                            textTransform: 'none',
-                            '&:hover': {
-                                backgroundColor: '#002DA1',
-                            },
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: 500,
-                            fontSize: '1rem',
-                        }}
-                    >
-                        Continue
-                        <ArrowForwardIcon sx={{ marginLeft: 1, fontSize: '1rem' }} />
-                    </Button>
+                    <ContinueButton onNext={onNext} />
                 ) : null}
             </Box>
         </Box>

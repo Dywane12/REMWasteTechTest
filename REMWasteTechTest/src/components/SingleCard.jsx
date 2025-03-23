@@ -1,7 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Chip, Box } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+import SelectSkipButton from "./SelectSkipButton.jsx";
+import HeavyWasteError from "./HeavyWasteError.jsx";
+import AllowedOnRoadWarning from "./AllowedOnRoadWarning.jsx";
+import {strings} from "../strings/strings.js";
 
 function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad, allowsHeavyWaste }) {
     const isDisabled = !allowsHeavyWaste;
@@ -30,7 +32,7 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                 <CardMedia
                     component="img"
                     height="200"
-                    image='https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=800'
+                    image={strings.imageURL}
                     alt="Container Yard"
                 />
                 <Chip
@@ -46,75 +48,17 @@ function SingleCard({ size, hirePeriod, price, selected, onSelect, allowedOnRoad
                         fontSize: '1rem'
                     }}
                 />
-                {!allowedOnRoad && (
-                    <Box
-                        sx={{
-                            width: '60%',
-                            position: 'absolute',
-                            left: '1rem',
-                            bottom: allowsHeavyWaste ? '0.75rem' : '3.25rem',
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            padding: '0.5rem',
-                            borderRadius: '4px',
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <WarningAmberOutlinedIcon sx={{ color: '#E4AF07', marginRight: '0.5rem', fontSize: '1rem' }} />
-                        <Typography variant="body2" color="#E4AF07" sx={{ fontSize: '0.75rem', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
-                            Private Property Only
-                        </Typography>
-                    </Box>
-                )}
-                {!allowsHeavyWaste && (
-                    <Box
-                        sx={{
-                            width: '60%',
-                            position: 'absolute',
-                            left: '1rem',
-                            bottom: '0.75rem',
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            padding: '0.5rem',
-                            borderRadius: '4px',
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <WarningAmberOutlinedIcon sx={{ color: '#E84242', marginRight: '0.5rem', fontSize: '1rem' }} />
-                        <Typography variant="body2" color="#E84242" sx={{ fontSize: '0.75rem', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
-                            Not Suitable for Heavy Waste
-                        </Typography>
-                    </Box>
-                )}
+                {!allowedOnRoad ? <AllowedOnRoadWarning allowsHeavyWaste={allowsHeavyWaste}/> : null}
+                {!allowsHeavyWaste ? <HeavyWasteError /> : null}
             </Box>
             <CardContent>
-                <Typography variant="h6" gutterBottom sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${size} Yard Skip`}</Typography>
-                <Typography variant="body2" color="gray" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${hirePeriod} day hire period`}</Typography>
+                <Typography variant="h6" gutterBottom sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${size} ${strings.yardSkip}`}</Typography>
+                <Typography variant="body2" color="gray" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${hirePeriod} ${strings.dayHirePeriod}`}</Typography>
                 <Box sx={{ display: 'flex', alignItems: 'baseline', marginTop: 1 }}>
-                    <Typography variant="h4" color="#0037C1" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`£${price}`}</Typography>
-                    <Typography variant="body1" color="gray" sx={{ marginLeft: 1, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>per week</Typography>
+                    <Typography variant="h4" color="#0037C1" sx={{fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500}}>{`${strings.currency}${price}`}</Typography>
+                    <Typography variant="body1" color="gray" sx={{ marginLeft: 1, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>{strings.perWeek}</Typography>
                 </Box>
-                <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                        marginTop: 2,
-                        padding: '0.75rem',
-                        fontSize: '1rem',
-                        backgroundColor: selected ? '#0037C1' : '#333',
-                        color: isDisabled ? '#888' : '#fff',
-                        textTransform: 'none',
-                        '&:hover': {
-                            backgroundColor: selected ? '#002DA1' : '#444',
-                        },
-                        cursor: isDisabled ? 'not-allowed' : 'pointer',
-                        fontFamily: 'Inter, system-ui, sans-serif',
-                        fontWeight: 500
-                    }}
-                >
-                    {selected ? 'Selected' : 'Select This Skip'}
-                    {!selected && <ArrowForwardIcon sx={{ marginLeft: 1, fontSize: '1rem' }} />}
-                </Button>
+                <SelectSkipButton isDisabled={isDisabled} selected={selected} />
             </CardContent>
         </Card>
     );

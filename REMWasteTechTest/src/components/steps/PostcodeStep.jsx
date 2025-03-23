@@ -1,9 +1,10 @@
 import React from 'react';
 import StepTemplate from "../StepTemplate.jsx";
+import {strings} from "../../strings/strings.js";
 
 
 function PostcodeStep({ onNext, onBack, activeStep }) {
-    return <StepTemplate stepName="Postcode" onNext={onNext} onBack={onBack} activeStep={activeStep} />;
+    return <StepTemplate stepName={strings.postcodeLabel} onNext={onNext} onBack={onBack} activeStep={activeStep} />;
 }
 
 export default PostcodeStep;

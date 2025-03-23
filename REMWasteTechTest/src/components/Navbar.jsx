@@ -8,6 +8,7 @@ import {
     CalendarTodayOutlined as CalendarIcon,
     CreditCardOutlined as CreditCardIcon,
 } from '@mui/icons-material';
+import {strings} from "../strings/strings.js";
 
 // Styled connector
 const BlueConnector = styled(StepConnector)(({ theme }) => ({
@@ -43,18 +44,19 @@ const CustomStepLabel = styled(StepLabel)(({ active, completed, disabled }) => (
     },
     '&.Mui-disabled .MuiSvgIcon-root': {
         color: '#555',
+        cursor: disabled ? 'not-allowed' : 'pointer',
     },
 }));
 
 const Navbar = ({ activeStep, setActiveStep }) => {
     const isSmallScreen = useMediaQuery('(max-width: 600px)');
     const steps = [
-        { label: 'Postcode', icon: <Location /> },
-        { label: 'Waste Type', icon: <DeleteIcon /> },
-        { label: 'Select Skip', icon: <TruckIcon /> },
-        { label: 'Permit Check', icon: <ShieldIcon /> },
-        { label: 'Choose Date', icon: <CalendarIcon /> },
-        { label: 'Payment', icon: <CreditCardIcon /> },
+        { label: strings.postcodeLabel, icon: <Location /> },
+        { label: strings.wasteTypeLabel, icon: <DeleteIcon /> },
+        { label: strings.selectSkipLabel, icon: <TruckIcon /> },
+        { label: strings.permitCheckLabel, icon: <ShieldIcon /> },
+        { label: strings.chooseDateLabel, icon: <CalendarIcon /> },
+        { label: strings.paymentLabel, icon: <CreditCardIcon /> },
     ];
 
     const handleStepClick = (index) => {
