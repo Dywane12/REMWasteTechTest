@@ -12,7 +12,7 @@ First, I looked at the Skip Select Page and figured out the main components. Tho
 3. The card list
 4. The popup when selecting a card
 
-I then noticed some problems with the page. THe stepper was not responsive, the popup didn't show any information, such as price or skip size and once a card was selected, it couldn't be unselected.
+I then noticed some problems with the page. The stepper was not responsive, the popup didn't show any information, such as price or skip size and once a card was selected, it couldn't be deselected.
 
 When I was making the stepper, I made it responsive by using flexbox when styling it.
 
