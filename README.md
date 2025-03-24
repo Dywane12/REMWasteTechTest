@@ -1,6 +1,6 @@
 # REMWasteTechTest
 
-### Andrei Calin
+### Made by Calin Andrei
 In this file, I will walk your through my thought process and my changes.
 
 First, I looked at the Skip Select Page and figured out the main components. Those were:
