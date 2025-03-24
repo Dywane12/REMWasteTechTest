@@ -3,6 +3,9 @@
 ### Made by Calin Andrei
 In this file, I will walk your through my thought process and my changes.
 
+You can access the website here:
+https://rem-waste-tech-test.vercel.app/
+
 First, I looked at the Skip Select Page and figured out the main components. Those were:
 1. The stepper (at the top)
 2. The title and subtitle
