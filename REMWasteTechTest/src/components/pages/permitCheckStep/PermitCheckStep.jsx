@@ -1,6 +1,6 @@
 import React from 'react';
-import StepTemplate from "../StepTemplate.jsx";
-import {strings} from "../../strings/strings.js";
+import StepTemplate from "../../templates/stepTemplate/StepTemplate.jsx";
+import {strings} from "../../../config/strings.js";
 
 
 function PermitCheckStep({ onNext, onBack, activeStep }) {

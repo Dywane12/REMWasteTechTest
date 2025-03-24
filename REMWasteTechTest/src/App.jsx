@@ -1,12 +1,12 @@
 import './App.css';
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/ui/stepper/Navbar.jsx";
 import React, { useState } from 'react';
-import PostcodeStep from "./components/steps/PostcodeStep.jsx";
-import WasteTypeStep from "./components/steps/WasteTypeStep.jsx";
-import SelectSkipStep from "./components/steps/SelectSkipStep.jsx";
-import PermitCheckStep from "./components/steps/PermitCheckStep.jsx";
-import ChooseDateStep from "./components/steps/ChooseDateStep.jsx";
-import PaymentStep from "./components/steps/PaymentStep.jsx";
+import PostcodeStep from "./components/pages/postcodeStep/PostcodeStep.jsx";
+import WasteTypeStep from "./components/pages/wasteTypeStep/WasteTypeStep.jsx";
+import SelectSkipStep from "./components/pages/selectSkipStep/SelectSkipStep.jsx";
+import PermitCheckStep from "./components/pages/permitCheckStep/PermitCheckStep.jsx";
+import ChooseDateStep from "./components/pages/chooseDateStep/ChooseDateStep.jsx";
+import PaymentStep from "./components/pages/paymentStep/PaymentStep.jsx";
 
 
 function App() {

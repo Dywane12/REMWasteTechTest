@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SingleCard from './SingleCard';
+import SingleCard from '../singleCard/SingleCard.jsx';
 import { Grid, CircularProgress, Box } from '@mui/material';
-import Popup from "./Popup.jsx";
-import {fetchSkips} from "../utils/api.js";
+import Popup from "../popup/Popup.jsx";
+import {fetchSkips} from "../../../utils/api.js";
+import {CardListBoxStyles, CardListGridStyles} from "./CardListStyles.js";
 
 function CardList({ onNext, onBack }) {
     const [skips, setSkips] = useState([]);
@@ -45,10 +46,11 @@ function CardList({ onNext, onBack }) {
     }
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 3 }}>
+        <Box sx={CardListBoxStyles}>
             <Grid container spacing={3} justifyContent="center" alignItems="center" maxWidth="lg">
-                {skips.map((skip, index) => (
-                    <Grid item key={index} xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+                {
+                    skips.map((skip, index) => (
+                    <Grid item key={index} xs={12} sm={6} md={4} sx={CardListGridStyles}>
                         <SingleCard
                             image={skip.imageUrl}
                             size={skip.size}
@@ -60,7 +62,8 @@ function CardList({ onNext, onBack }) {
                             allowsHeavyWaste={skip.allows_heavy_waste}
                         />
                     </Grid>
-                ))}
+                ))
+                }
             </Grid>
             {selectedCardIndex !== null && (
                 <Popup skip={skips[selectedCardIndex]}

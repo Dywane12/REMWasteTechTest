@@ -1,15 +1,16 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import ContinueButton from "./ContinueButton.jsx";
-import BackButton from "./BackButton.jsx";
+import ContinueButton from "../../ui/continueButton/ContinueButton.jsx";
+import BackButton from "../../ui/backButton/BackButton.jsx";
+import {StepTemplateBox, TypographyStyles} from "./StepTemplateStyles.js";
 
 function StepTemplate({ stepName, onNext, onBack, activeStep }) {
     return (
-        <Box sx={{ padding: 3, textAlign: 'center' }}>
-            <Typography variant="h4" sx={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 'bold' }}>
+        <Box sx={StepTemplateBox(false)}>
+            <Typography variant="h4" sx={TypographyStyles}>
                 {stepName}
             </Typography>
-            <Box sx={{ marginTop: 2 }}>
+            <Box sx={StepTemplateBox(true)}>
                 {activeStep > 0 ? (
                     <BackButton onBack={onBack} />
                 ) : null}
