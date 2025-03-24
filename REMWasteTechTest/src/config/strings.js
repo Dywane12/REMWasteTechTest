@@ -8,7 +8,7 @@ export const strings = {
     continueButton: 'Continue',
     selected: 'Selected',
     selectThisSkip: 'Select This Skip',
-    plusVAT: '+ VAT',
+    plusVAT: '+ VAT (20%)',
     currency: '£',
     perWeek: 'per week',
     dayHirePeriod: 'day hire period',

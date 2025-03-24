@@ -9,9 +9,13 @@ First, I looked at the Skip Select Page and figured out the main components. Tho
 3. The card list
 4. The popup when selecting a card
 
-I then noticed some problems with the page. THe stepper was not responsive, and the popup didn't show any information, such as price or skip size.
+I then noticed some problems with the page. THe stepper was not responsive, the popup didn't show any information, such as price or skip size and once a card was selected, it couldn't be unselected.
 
-When I was making the stepper, I made it responsive, and when I was making the popup, I made sure the data was being displayed properly.
+When I was making the stepper, I made it responsive by using flexbox when styling it.
+
+When I was making the popup, I made sure the data was being displayed properly by taking the price and skip size of the selected card and displaying them. I multiplied the price by the number of weeks of the hire (price * (hire_period / 7)) to make sure the price was accurate.
+
+And when I was making the cards, I made sure they could also be deselected by adding the `handleCardSelect` function.
 
 After the page was created with the added modifications for a better UI/UX experience and checked for any possible bugs, I started remaking the folder structure and splitting the code in more modular components for better maintainability in the future. I split the components into three major categories:
 1. `pages` - each step of the stepper has its own page
