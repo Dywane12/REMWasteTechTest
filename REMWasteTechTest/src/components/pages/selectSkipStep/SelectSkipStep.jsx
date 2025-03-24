@@ -3,7 +3,7 @@ import Navbar from "../../ui/stepper/Navbar.jsx";
 import {Box, Typography} from "@mui/material";
 import {strings} from "../../../config/strings.js";
 import CardList from "../../ui/cardList/CardList.jsx";
-import {SubtitleStyles, TitleStyles} from "./SelectSkipStepStyles.js";
+import {SelectSkipBoxStyles, SubtitleStyles, TitleStyles} from "./SelectSkipStepStyles.js";
 
 
 
