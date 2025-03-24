@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Navbar from "../../ui/stepper/Navbar.jsx";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {strings} from "../../../config/strings.js";
 import CardList from "../../ui/cardList/CardList.jsx";
 import {SubtitleStyles, TitleStyles} from "./SelectSkipStepStyles.js";
@@ -10,7 +10,7 @@ import {SubtitleStyles, TitleStyles} from "./SelectSkipStepStyles.js";
 function SelectSkipStep({ onNext, onBack }) {
 
     return (
-        <>
+        <Box sx={SelectSkipBoxStyles}>
             <Typography variant='h5' sx={TitleStyles}>
                 {strings.title}
             </Typography>
@@ -18,7 +18,7 @@ function SelectSkipStep({ onNext, onBack }) {
                 {strings.subtitle}
             </Typography>
             <CardList onNext={onNext} onBack={onBack} />
-        </>
+        </Box>
     );
 }
 

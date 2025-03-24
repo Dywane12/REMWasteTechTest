@@ -12,3 +12,7 @@ export const SubtitleStyles = {
     padding: '1rem',
     fontSize: '1rem'
 }
+
+export const SelectSkipBoxStyles = {
+    textAlign: 'center'
+}
